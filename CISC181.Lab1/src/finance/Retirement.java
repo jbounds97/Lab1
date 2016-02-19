@@ -6,7 +6,10 @@ public class Retirement {
 	public static void main(String args[]) {
 		User_data person = new User_data();
 		getValues(person);
-		System.out.print(calculate_savings(person));
+		Double total_savings = calculate_savings(person);
+		Double save_each_month = calculate_amount_to_save(person, total_savings);
+		System.out.println(total_savings);
+		System.out.println(save_each_month);
 	}
 	
 	public static User_data getValues (User_data person) {
@@ -46,8 +49,15 @@ public class Retirement {
 	}
 	public static Double calculate_savings(User_data new_person){
 		   Double total_savings = (new_person.getRequired_income() - new_person.getMonthly_ssi())*((1-(1/
-				   (Math.pow(1+(new_person.getAnnual_return_after()/100)/12,new_person.getAnnual_return_after()*12 )))))/((new_person.getAnnual_return_after()/100)/12);
+				   (Math.pow(1+(new_person.getAnnual_return_after()/100)/12,new_person.getYears_retired()*12 )))))/((new_person.getAnnual_return_after()/100)/12);
 		   return total_savings;
 	}
+	
+	public static Double calculate_amount_to_save(User_data new_person, Double total_savings){
+		Double save_each_month =  total_savings*(((new_person.getAnnual_return_before()/100)/12)/((Math.pow(1+(new_person.getAnnual_return_before()/100)/12, new_person.getYears_retired()*12))-1));
+
+		return save_each_month;
+	}
+	
 
 }
