@@ -8,6 +8,7 @@ public class User_data {
 	private Double required_income;
 	private Double monthly_ssi;
 	
+	//Setters and getters
 	public Double getYears_to_work() {
 		return years_to_work;
 	}
@@ -44,8 +45,4 @@ public class User_data {
 	public void setMonthly_ssi(Double monthly_ssi) {
 		this.monthly_ssi = monthly_ssi;
 	}
-	
-	
-	
-
 }
